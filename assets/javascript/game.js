@@ -46,23 +46,40 @@ function attack(x, y) {
 function block(x) {
     x.isBlock = true
     x.defense = x.defense * 2.5
+    $("#player-def").text(player.defense);
     console.log(x.defense)
 };
 
-function atkbuff (x) {
+function atkbuff(x) {
     x.isBuff = true
     x.attack = x.attack * 2.5
+    $("#player-atk").text(player.attack);
     console.log(x.attack)
 };
 
-function turnEnd (x, y) {
+function turnEnd(x, y) {
     x.isBlock = false
     y.isBlock = false
     x.defense = x.defense / 2.5
     y.defense = y.defense / 2.5
 };
 
+$(document).ready(function(){
 
-$("#player-hp").text(player.hp);
-$("#player-atk").text(player.attack);
-$("#player-def").text(player.defense);
+    $("#player-hp").text(player.hp);
+    $("#player-atk").text(player.attack);
+    $("#player-def").text(player.defense);
+
+    $("#btn-atk").click(function(){
+        attack(player, enemy_1)
+    });
+    
+    $("#btn-buff").click(function(){
+        atkbuff(player)
+    });
+
+    $("#btn-blk").click(function(){
+        block(player)
+    });
+
+})
