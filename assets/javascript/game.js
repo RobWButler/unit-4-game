@@ -30,14 +30,20 @@ var enemy_3 = {
     isBuff: false,
 };
 
+var damage = "";
+
 function attack(x, y) {
 
-    y.hp = (y.hp - x.attack) + y.defense;
+    damage = x.attack - y.defense
+
+    y.hp = y.hp - damage
+
     $("#player-hp").text(player.hp);
     
     if (x.isBuff) {
         x.isBuff = false;
         x.attack = x.attack / 2.5
+        $("#player-atk").text(player.attack);
     }
 
     console.log(x, y)
@@ -72,6 +78,7 @@ $(document).ready(function(){
 
     $("#btn-atk").click(function(){
         attack(player, enemy_1)
+        $("#actiontext").text("You attacked the enemy for " + damage + " damage!")
     });
     
     $("#btn-buff").click(function(){
