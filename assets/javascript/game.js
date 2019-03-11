@@ -1,7 +1,7 @@
 var player = {
     hp: 200,
-    attack: 80,
-    defense: 50,
+    attack: 60,
+    defense: 20,
     isBlock: false,
     isBuff: false,
 };
@@ -31,34 +31,35 @@ var enemy_3 = {
 };
 
 function attack(x, y) {
-    if (y.isBlock) {
-        y.hp = y.hp + (y.defense + (y.defense/2))
-    }
 
+    y.hp = (y.hp - x.attack) + y.defense;
+    $("#player-hp").text(player.hp);
+    
     if (x.isBuff) {
-        y.hp = y.hp - (x.attack + (x.attack/2))
+        x.isBuff = false;
+        x.attack = x.attack / 2.5
     }
 
-    else {
-        y.hp = (y.hp - x.attack) + y.defense
-    }
-
-    console.log(player, enemy_1)
+    console.log(x, y)
 };
 
 function block(x) {
     x.isBlock = true
+    x.defense = x.defense * 2.5
+    console.log(x.defense)
 };
 
 function atkbuff (x) {
     x.isBuff = true
+    x.attack = x.attack * 2.5
+    console.log(x.attack)
 };
 
 function turnEnd (x, y) {
     x.isBlock = false
-    x.isBuff = false
     y.isBlock = false
-    y.isBuff = false
+    x.defense = x.defense / 2.5
+    y.defense = y.defense / 2.5
 };
 
 
