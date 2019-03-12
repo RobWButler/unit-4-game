@@ -30,10 +30,11 @@ var enemy_3 = {
     isBuff: false,
 };
 
-
 var damage = "";
 
 var alreadyBuff = false;
+
+var enemyChoice = [];
 
 function attack(x, y) {
 
@@ -70,6 +71,13 @@ function atkbuff(x) {
         alreadyBuff = true
     }
 };
+
+//function enemyTurn () {
+//    var enemyActions = [attack(enemy_1, player), block(enemy_1), atkbuff(enemy_1)];
+//    enemyChoice = enemyActions[Math.floor(Math.random()*enemyActions.length - 1)];
+
+//   console.log(enemyChoice)
+//}
 
 function turnEnd(x, y) {
     if (x.isBlock) {
