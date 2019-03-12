@@ -33,6 +33,8 @@ var enemy_3 = {
 
 var damage = "";
 
+var alreadyBuff = false;
+
 function attack(x, y) {
 
     damage = x.attack - y.defense
@@ -43,7 +45,7 @@ function attack(x, y) {
     
     if (x.isBuff) {
         x.isBuff = false;
-        x.attack = x.attack / 2.5
+        x.attack = x.attack / 2
         $("#player-atk").text(player.attack);
     }
 
@@ -57,9 +59,16 @@ function block(x) {
 };
 
 function atkbuff(x) {
-    x.isBuff = true
-    x.attack = x.attack * 2.5
-    console.log(x.attack)
+    if (x.isBuff) {
+        alreadyBuff = true
+    }
+
+    else {
+        x.isBuff = true
+        x.attack = x.attack * 2
+        console.log(x.attack)
+        alreadyBuff = true
+    }
 };
 
 function turnEnd(x, y) {
@@ -78,7 +87,6 @@ function turnEnd(x, y) {
 
 };
 
-$(document).ready(function(){
 
     $("#player-hp").text(player.hp);
     $("#player-atk").text(player.attack);
@@ -87,14 +95,24 @@ $(document).ready(function(){
     $("#btn-atk").click(function(){
         attack(player, enemy_1)
         $("#actiontext").text("You attacked the enemy for " + damage + " damage!")
+        alreadyBuff = false;
         turnEnd(player, enemy_1)
     });
     
     $("#btn-buff").click(function(){
-        atkbuff(player)
-        $("#actiontext").text("You strengthened your attack for next turn!")
-        $("#player-atk").text(player.attack);
-        turnEnd(player, enemy_1)
+
+        if (alreadyBuff) {
+            $("#actiontext").text("Can't power up twice in a row!")
+            $("#player-atk").text(player.attack);
+            turnEnd(player, enemy_1)
+        }
+
+        else {
+            atkbuff(player)
+            $("#actiontext").text("You strengthened your attack for next turn!")
+            $("#player-atk").text(player.attack);
+            turnEnd(player, enemy_1)
+        }
     });
 
     $("#btn-blk").click(function(){
@@ -103,4 +121,3 @@ $(document).ready(function(){
         turnEnd(player, enemy_1)
     });
 
-})

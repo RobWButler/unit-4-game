@@ -18,15 +18,23 @@
                     <div id="playername"><h1>Player</h1></div>
                 </section>
 
-                <hr style>
+                <hr>
 
                 <div class="char_info">
-                    <h1>HP:</h1> <h1 id="player-hp"></h1>
-                    <h1>ATK:</h1> <h1 id="player-atk"></h1>
-                    <h1>DEF:</h1> <h1 id="player-def"></h1>
-                    <button id="btn-atk">Attack</button>
-                    <button id="btn-buff">Power-Up</button>
-                    <button id="btn-blk">Block</button>
+
+                    <div class="statsheet">
+                        <div class="statline"><h1 style="float:left">HP: </h1> <h1 id="player-hp" style="float:right"></h1></div>
+                        <div class="statline"><h1 style="float:left">ATK: </h1> <h1 id="player-atk" style="float:right"></h1></div>
+                        <div class="statline"><h1 style="float:left">DEF: </h1> <h1 id="player-def" style="float:right"></h1></div>
+                    </div>
+
+                    <hr>
+                    
+                    <section id="buttonspace">
+                        <button id="btn-atk">Attack</button>
+                        <button id="btn-buff">Power-Up</button>
+                        <button id="btn-blk">Block</button>
+                    </section>
                 </div>
 
             </div>
@@ -37,12 +45,16 @@
                         <div id="enemyname"><h1>Enemy</h1></div>
                     </section>
         
-                    <hr style>
+                    <hr>
         
                     <div class="char_info">
-                        <h1>HP:</h1> <h1 id="enemy-hp"></h1>
-                        <h1>ATK:</h1> <h1 id="enemy-atk"></h1>
-                        <h1>DEF:</h1> <h1 id="enemy-def"></h1>
+
+                        <div class="statsheet">
+                            <div class="statline"><h1 style="float:left">HP:</h1> <h1 id="enemy-hp"></h1></div>
+                            <div class="statline"><h1 style="float:left">ATK:</h1> <h1 id="enemy-atk"></h1></div>
+                            <div class="statline"><h1 style="float:left">DEF:</h1> <h1 id="enemy-def"></h1></div>
+                        </div>
+
                     </div>
         
                 </div>
