@@ -4,6 +4,8 @@ var player = {
     defense: 20,
     isBlock: false,
     isBuff: false,
+    isLive: true,
+    alreadyBuff = false,
 };
 
 var enemy_1 = {
@@ -12,6 +14,8 @@ var enemy_1 = {
     defense: 10,
     isBlock: false,
     isBuff: false,
+    isLive: true,
+    alreadyBuff = false
 };
 
 var enemy_2 = {
@@ -20,6 +24,8 @@ var enemy_2 = {
     defense: 30,
     isBlock: false,
     isBuff: false,
+    isLive: true,
+    alreadyBuff = false,
 };
 
 var enemy_3 = {
@@ -28,11 +34,11 @@ var enemy_3 = {
     defense: 50,
     isBlock: false,
     isBuff: false,
+    isLive: true,
+    alreadyBuff = false,
 };
 
 var damage = "";
-
-var alreadyBuff = false;
 
 var enemyChoice = [];
 
@@ -43,11 +49,14 @@ function attack(x, y) {
     y.hp = y.hp - damage
 
     $("#player-hp").text(player.hp);
+    $("#enemy-hp").text(enemy_1.hp);
     
     if (x.isBuff) {
         x.isBuff = false;
         x.attack = x.attack / 2
         $("#player-atk").text(player.attack);
+        $("#enemy-atk").text(player.attack);
+
     }
 
     console.log(x, y)
@@ -61,23 +70,23 @@ function block(x) {
 
 function atkbuff(x) {
     if (x.isBuff) {
-        alreadyBuff = true
+        x.alreadyBuff = true
     }
 
     else {
         x.isBuff = true
         x.attack = x.attack * 2
         console.log(x.attack)
-        alreadyBuff = true
+        x.alreadyBuff = true
     }
 };
 
-//function enemyTurn () {
-//    var enemyActions = [attack(enemy_1, player), block(enemy_1), atkbuff(enemy_1)];
-//    enemyChoice = enemyActions[Math.floor(Math.random()*enemyActions.length - 1)];
-
-//   console.log(enemyChoice)
-//}
+function enemyTurn(event) {
+    var enemyActions = [attack(enemy_1, player)];
+    enemyChoice = enemyActions[Math.floor(Math.random()*enemyActions.length)];
+    $("#enemyactiontext").text("Enemy counter-attacked for " + damage + " damage!")
+    console.log(enemyChoice)
+}
 
 function turnEnd(x, y) {
     if (x.isBlock) {
@@ -93,6 +102,16 @@ function turnEnd(x, y) {
 
     $("#player-def").text(player.defense);
 
+    if (player.hp <= 0) {
+        $("#actiontext").text("You lose!")
+        player.isLive = false;
+    }
+
+    if (enemy_1.hp <= 0) {
+        $("#enemyactiontext").text("You defeated the enemy!")
+        enemy_1.isLive = false;
+    }
+
 };
 
 
@@ -100,16 +119,22 @@ function turnEnd(x, y) {
     $("#player-atk").text(player.attack);
     $("#player-def").text(player.defense);
 
+    $("#enemy-hp").text(enemy_1.hp);
+    $("#enemy-atk").text(enemy_1.attack);
+    $("#enemy-def").text(enemy_1.defense);
+
     $("#btn-atk").click(function(){
         attack(player, enemy_1)
         $("#actiontext").text("You attacked the enemy for " + damage + " damage!")
-        alreadyBuff = false;
+        player.alreadyBuff = false;
+        enemyTurn()
         turnEnd(player, enemy_1)
+        
     });
     
     $("#btn-buff").click(function(){
 
-        if (alreadyBuff) {
+        if (player.alreadyBuff) {
             $("#actiontext").text("Can't power up twice in a row!")
             $("#player-atk").text(player.attack);
             turnEnd(player, enemy_1)

@@ -14,7 +14,6 @@ hr {
 .statline {
     padding-bottom:40px;
     margin-left:7px;
-
 }
 
 #gamespace {
@@ -60,6 +59,10 @@ hr {
 }
 
 #actiontext {
+    margin: 15px;
+}
+
+#enemyactiontext {
     margin: 15px;
 }
 
