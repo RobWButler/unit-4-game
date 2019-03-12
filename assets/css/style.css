@@ -12,7 +12,7 @@ h1 {
 
 #playerspace {
     border-style: ridge;
-    border-width: 2px;
+    border-width: 3px;
     border-color:darkslateblue;
     margin-bottom: 10px;
     height: 300px;
@@ -22,12 +22,12 @@ h1 {
 
 #enemyspace {
     border-style: ridge;
-    border-width: 2px;
-    border-color:darkred;
+    border-width: 3px;
+    border-color:red;
     margin-bottom: 10px;
     height: 300px;
     width: 200px;
-    right:0px;
+    right:-5px;
     top:0px;
     position:absolute;
 }

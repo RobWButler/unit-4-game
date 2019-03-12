@@ -53,14 +53,12 @@ function attack(x, y) {
 function block(x) {
     x.isBlock = true
     x.defense = x.defense * 2.5
-    $("#player-def").text(player.defense);
     console.log(x.defense)
 };
 
 function atkbuff(x) {
     x.isBuff = true
     x.attack = x.attack * 2.5
-    $("#player-atk").text(player.attack);
     console.log(x.attack)
 };
 
@@ -72,10 +70,11 @@ function turnEnd(x, y) {
     if (y.isBlock) {
         y.defense = y.defense / 2.5
     }
-    
+
     x.isBlock = false
     y.isBlock = false
 
+    $("#player-def").text(player.defense);
 
 };
 
@@ -94,12 +93,13 @@ $(document).ready(function(){
     $("#btn-buff").click(function(){
         atkbuff(player)
         $("#actiontext").text("You strengthened your attack for next turn!")
+        $("#player-atk").text(player.attack);
         turnEnd(player, enemy_1)
     });
 
     $("#btn-blk").click(function(){
         block(player)
-        $("#actiontext").text("You strengthened your defense for next turn!")
+        $("#actiontext").text("You blocked some incoming damage!")
         turnEnd(player, enemy_1)
     });
 
