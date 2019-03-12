@@ -7,13 +7,14 @@ h1 {
     width: 70rem;
     margin: auto;
     position:relative;
+    margin-top:15px;
 }
 
 #playerspace {
     border-style: ridge;
     border-width: 2px;
     border-color:darkslateblue;
-    margin: 10px;
+    margin-bottom: 10px;
     height: 300px;
     width: 200px;
     left:0px;
@@ -23,11 +24,11 @@ h1 {
     border-style: ridge;
     border-width: 2px;
     border-color:darkred;
-    margin: 10px;
+    margin-bottom: 10px;
     height: 300px;
     width: 200px;
     right:0px;
-    top:-10px;
+    top:0px;
     position:absolute;
 }
 

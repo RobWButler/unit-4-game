@@ -30,6 +30,7 @@ var enemy_3 = {
     isBuff: false,
 };
 
+
 var damage = "";
 
 function attack(x, y) {
@@ -64,10 +65,18 @@ function atkbuff(x) {
 };
 
 function turnEnd(x, y) {
+    if (x.isBlock) {
+        x.defense = x.defense / 2.5
+    }
+
+    if (y.isBlock) {
+        y.defense = y.defense / 2.5
+    }
+    
     x.isBlock = false
     y.isBlock = false
-    x.defense = x.defense / 2.5
-    y.defense = y.defense / 2.5
+
+
 };
 
 $(document).ready(function(){
@@ -79,14 +88,19 @@ $(document).ready(function(){
     $("#btn-atk").click(function(){
         attack(player, enemy_1)
         $("#actiontext").text("You attacked the enemy for " + damage + " damage!")
+        turnEnd(player, enemy_1)
     });
     
     $("#btn-buff").click(function(){
         atkbuff(player)
+        $("#actiontext").text("You strengthened your attack for next turn!")
+        turnEnd(player, enemy_1)
     });
 
     $("#btn-blk").click(function(){
         block(player)
+        $("#actiontext").text("You strengthened your defense for next turn!")
+        turnEnd(player, enemy_1)
     });
 
 })
