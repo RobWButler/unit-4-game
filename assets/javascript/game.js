@@ -63,8 +63,6 @@ var damage = "";
 var playerChoice = false;
 var enemyChoice = false;
 
-var enemyChoice = [];
-
 function attack(x, y) {
 
     damage = x.attack - y.defense
@@ -104,9 +102,9 @@ function atkbuff(x) {
     }
 };
 
+//Aborted attempt at calling random functions so enemy could use the same moves as player randomly each turn
 function enemyTurn(event) {
-    var enemyActions = [attack(enemy, player)];
-    enemyChoice = enemyActions[Math.floor(Math.random()*enemyActions.length)];
+    attack(enemy, player)
     $("#enemyactiontext").text("Enemy counter-attacked for " + damage + " damage!")
     console.log(enemyChoice)
 }
@@ -178,7 +176,6 @@ $("#btn-blk").click(function(){
 });
 
 
-
 $("#choice1").click(function(){
     if (playerChoice != true) {
         for(var k in char_1) (player[k] = char_1[k])
@@ -187,6 +184,7 @@ $("#choice1").click(function(){
         $("#player-def").text(player.defense);
         playerChoice = true;
         $("#choice1").toggle()
+        $("#instructions").text("Select your opponent!")
     }
     
     else if (enemyChoice !=true || enemy.isLive != true) {
@@ -196,6 +194,8 @@ $("#choice1").click(function(){
         $("#enemy-def").text(enemy.defense);
         enemyChoice = true;
         $("#choice1").toggle()
+        $("#instructions").text("Battle!")
+
     }
 
     else {
@@ -212,6 +212,7 @@ $("#choice2").click(function(){
         $("#player-def").text(player.defense);
         playerChoice = true;
         $("#choice2").toggle()
+        $("#instructions").text("Select your opponent!")
     }
 
     else if (enemyChoice !=true || enemy.isLive != true) {
@@ -221,6 +222,8 @@ $("#choice2").click(function(){
         $("#enemy-def").text(enemy.defense);
         enemyChoice = true;
         $("#choice2").toggle()
+        $("#instructions").text("Battle!")
+
     }
     
     else {
@@ -236,6 +239,7 @@ $("#choice3").click(function(){
         $("#player-def").text(player.defense);
         playerChoice = true;
         $("#choice3").toggle()
+        $("#instructions").text("Select your opponent!")
 
     }
     
@@ -246,6 +250,7 @@ $("#choice3").click(function(){
         $("#enemy-def").text(enemy.defense);
         enemyChoice = true;
         $("#choice3").toggle()
+        $("#instructions").text("Battle!")
 
     }
 
@@ -262,6 +267,7 @@ $("#choice4").click(function(){
         $("#player-def").text(player.defense);
         playerChoice = true;
         $("#choice4").toggle()
+        $("#instructions").text("Select your opponent!")
 
     }
     
@@ -272,6 +278,7 @@ $("#choice4").click(function(){
         $("#enemy-def").text(enemy.defense);
         enemyChoice = true;
         $("#choice4").toggle()
+        $("#instructions").text("Battle!")
 
     }
 
