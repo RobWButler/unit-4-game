@@ -36,6 +36,7 @@ hr {
 #buttonspace {
     margin:7px;
     margin-top:25px;
+    display:none;
 }
 
 #enemyspace {
