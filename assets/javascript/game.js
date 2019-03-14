@@ -190,7 +190,6 @@ $("#choice1").click(function(){
         playerChoice = true;
         $("#choice1").toggle()
         $("#instructions").text("Select your opponent!")
-        $("#buttonspace").toggle()
     }
     
     else if (enemyChoice !=true && enemy.isLive) {
@@ -201,6 +200,8 @@ $("#choice1").click(function(){
         enemyChoice = true;
         $("#choice1").toggle()
         $("#instructions").text("Battle!")
+        $("#buttonspace").toggle()
+
 
     }
 
@@ -231,7 +232,6 @@ $("#choice2").click(function(){
         playerChoice = true;
         $("#choice2").toggle()
         $("#instructions").text("Select your opponent!")
-        $("#buttonspace").toggle()
 
     }
 
@@ -243,6 +243,7 @@ $("#choice2").click(function(){
         enemyChoice = true;
         $("#choice2").toggle()
         $("#instructions").text("Battle!")
+        $("#buttonspace").toggle()
 
     }
     
@@ -271,8 +272,6 @@ $("#choice3").click(function(){
         playerChoice = true;
         $("#choice3").toggle()
         $("#instructions").text("Select your opponent!")
-        $("#buttonspace").toggle()
-
 
     }
     
@@ -284,6 +283,7 @@ $("#choice3").click(function(){
         enemyChoice = true;
         $("#choice3").toggle()
         $("#instructions").text("Battle!")
+        $("#buttonspace").toggle()
 
     }
 
@@ -312,7 +312,6 @@ $("#choice4").click(function(){
         playerChoice = true;
         $("#choice4").toggle()
         $("#instructions").text("Select your opponent!")
-        $("#buttonspace").toggle()
 
     }
     
@@ -324,6 +323,8 @@ $("#choice4").click(function(){
         enemyChoice = true;
         $("#choice4").toggle()
         $("#instructions").text("Battle!")
+        $("#buttonspace").toggle()
+
 
     }
 
