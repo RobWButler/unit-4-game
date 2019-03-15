@@ -29,6 +29,7 @@ var char_1 = {
     isBuff: false,
     isLive: true,
     alreadyBuff: false,
+    choice: 1,
 }
 
 var char_2 = {
@@ -39,7 +40,8 @@ var char_2 = {
     isBlock: false,
     isBuff: false,
     isLive: true,
-    alreadyBuff: false
+    alreadyBuff: false,
+    choice: 2,
 };
 
 var char_3 = {
@@ -51,6 +53,7 @@ var char_3 = {
     isBuff: false,
     isLive: true,
     alreadyBuff: false,
+    choice: 3,
 };
 
 var char_4 = {
@@ -62,6 +65,7 @@ var char_4 = {
     isBuff: false,
     isLive: true,
     alreadyBuff: false,
+    choice: 4,
 };
 
 var damage = "";
@@ -235,188 +239,52 @@ $("#btn-blk").click(function(){
 
 
 $("#choice1").click(function(){
-    if (playerChoice != true) {
-        for(var k in char_1) (player[k] = char_1[k])
-        $("#playericon").attr("src", "assets/images/mario.png");
-        $("#playericon").css('visibility', 'visible');
-        $("#player-hp").text(" " + player.hp);
-        $("#player-atk").text(" " + player.attack);
-        $("#player-def").text(" " + player.defense);
-        $("#playername").html(player.name);
-        $("#player_sprite").append("<img src=assets/images/marioidle.gif>")
-        playerChoice = true;
-        $("#choice1").toggle()
-        $("#instructions").text("Select your opponent!")
-    }
-    
-    else if (enemyChoice !=true && enemy.isLive) {
-        for(var k in char_1) (enemy[k] = char_1[k])
-        $("#enemyicon").attr("src", "assets/images/mario.png");
-        $("#enemyicon").css('visibility', 'visible');
-        $("#enemy-hp").text(" " + enemy.hp);
-        $("#enemy-atk").text(" " + enemy.attack);
-        $("#enemy-def").text(" " + enemy.defense);
-        $("#enemyname").html(enemy.name);
-        $("#enemy_sprite").append("<img src=assets/images/marioidle.gif>")
-        $("#enemy_sprite").css('transform', 'scaleX(-1)');
-        enemyChoice = true;
-        $("#choice1").toggle()
-        $("#instructions").text("Battle!")
-        $("#buttonspace").toggle()
-
-
-    }
-
-    else if (enemyChoice && !enemy.isLive) {
-        for(var k in char_1) (enemy[k] = char_1[k])
-        $("#enemyicon").attr("src", "assets/images/mario.png");
-        $("#enemy-hp").text(" " + enemy.hp);
-        $("#enemy-atk").text(" " + enemy.attack);
-        $("#enemy-def").text(" " + enemy.defense);
-        $("#enemyname").html(enemy.name);
-        $("#enemy_sprite").append("<img src=assets/images/marioidle.gif>")
-        $("#enemy_sprite").css('transform', 'scaleX(-1)');
-        enemyChoice = true;
-        $("#choice1").toggle()
-        $("#instructions").text("Battle!")
-        $("#buttonspace").toggle()
-
-    }
-
-    else {
-
-    }
-
+    selectCharacter(char_1.name, char_1)
 })
 
 $("#choice2").click(function(){
-    if (playerChoice != true) {
-        for(var k in char_2) (player[k] = char_2[k])
-        $("#playericon").attr("src", "assets/images/luigi.png");
-        $("#playericon").css('visibility', 'visible');
-        $("#player-hp").text(" " + player.hp);
-        $("#player-atk").text(" " + player.attack);
-        $("#player-def").text(" " + player.defense);
-        $("#playername").text(player.name);
-        playerChoice = true;
-        $("#choice2").toggle()
-        $("#instructions").text("Select your opponent!")
+    selectCharacter(char_2.name, char_2)
 
-    }
-
-    else if (enemyChoice !=true && enemy.isLive) {
-        for(var k in char_2) (enemy[k] = char_2[k])
-        $("#enemyicon").attr("src", "assets/images/luigi.png");
-        $("#enemyicon").css('visibility', 'visible');
-        $("#enemyicon").css('transform', 'scaleX(-1)');
-        $("#enemy-hp").text(" " + enemy.hp);
-        $("#enemy-atk").text(" " + enemy.attack);
-        $("#enemy-def").text(" " + enemy.defense);
-        $("#enemyname").html(enemy.name);
-        enemyChoice = true;
-        $("#choice2").toggle()
-        $("#instructions").text("Battle!")
-        $("#buttonspace").toggle()
-
-    }
-    
-    else if (enemyChoice && !enemy.isLive) {
-        for(var k in char_2) (enemy[k] = char_2[k])
-        $("#enemyicon").attr("src", "assets/images/luigi.png");
-        $("#enemyicon").css('transform', 'scaleX(-1)');
-        $("#enemy-hp").text(" " + enemy.hp);
-        $("#enemy-atk").text(" " + enemy.attack);
-        $("#enemy-def").text(" " + enemy.defense);
-        $("#enemyname").html(enemy.name);
-        $("#choice2").toggle()
-        $("#instructions").text("Battle!")
-        $("#buttonspace").toggle()
-
-    }
-
-    else {
-
-    }
 })
 
 $("#choice3").click(function(){
+    selectCharacter(char_3.name, char_3)
 
-    if (playerChoice != true) {
-        for(var k in char_3) (player[k] = char_3[k])
-        $("#playericon").attr("src", "assets/images/peach.png");
-        $("#playericon").css('visibility', 'visible');
-        $("#playericon").css('transform', 'scaleX(-1)');
-        $("#player-hp").text(" " + player.hp);
-        $("#player-atk").text(" " + player.attack);
-        $("#player-def").text(" " + player.defense);
-        $("#playername").text(player.name);
-        playerChoice = true;
-        $("#choice3").toggle()
-        $("#instructions").text("Select your opponent!")
-
-    }
-    
-    else if (enemyChoice !=true && enemy.isLive) {
-        for(var k in char_3) (enemy[k] = char_3[k])
-        $("#enemyicon").attr("src", "assets/images/peach.png");
-        $("#enemyicon").css('visibility', 'visible');
-        $("#enemy-hp").text(" " + enemy.hp);
-        $("#enemy-atk").text(" " + enemy.attack);
-        $("#enemy-def").text(" " + enemy.defense);
-        $("#enemyname").html(enemy.name);
-        enemyChoice = true;
-        $("#choice3").toggle()
-        $("#instructions").text("Battle!")
-        $("#buttonspace").toggle()
-
-    }
-
-    else if (enemyChoice && !enemy.isLive) {
-        
-        for(var k in char_3) (enemy[k] = char_3[k])
-        $("#enemyicon").attr("src", "assets/images/peach.png");
-        $("#enemy-hp").text(" " + enemy.hp);
-        $("#enemy-atk").text(" " + enemy.attack);
-        $("#enemy-def").text(" " + enemy.defense);
-        $("#enemyname").html(enemy.name);
-        $("#choice3").toggle()
-        $("#instructions").text("Battle!")
-        $("#buttonspace").toggle();
-
-
-    }
-
-    else {
-
-    }
 })
 
 $("#choice4").click(function(){
+    selectCharacter(char_4.name, char_4)
+})
+
+function selectCharacter(charname, charnum) {
     if (playerChoice != true) {
-        for(var k in char_4) (player[k] = char_4[k])
-        $("#playericon").attr("src", "assets/images/bowser.png");
+        for(var k in charnum) (player[k] = charnum[k])
+        $("#playericon").attr("src", "assets/images/" + charname + ".png");
         $("#playericon").css('visibility', 'visible');
         $("#playericon").css('transform', 'scaleX(-1)');
         $("#player-hp").text(" " + player.hp);
         $("#player-atk").text(" " + player.attack);
         $("#player-def").text(" " + player.defense);
         $("#playername").text(player.name);
+        $("#player_sprite").append("<img src=assets/images/" + charname + "idle.gif>")
         playerChoice = true;
-        $("#choice4").toggle()
+        $("#choice" + charnum.choice).toggle()
         $("#instructions").text("Select your opponent!")
 
     }
     
     else if (enemyChoice !=true && enemy.isLive) {
-        for(var k in char_4) (enemy[k] = char_4[k])
-        $("#enemyicon").attr("src", "assets/images/bowser.png");
+        for(var k in charnum) (enemy[k] = charnum[k])
+        $("#enemyicon").attr("src", "assets/images/" + charname + ".png");
         $("#enemyicon").css('visibility', 'visible');
         $("#enemy-hp").text(" " + enemy.hp);
         $("#enemy-atk").text(" " + enemy.attack);
         $("#enemy-def").text(" " + enemy.defense);
         $("#enemyname").html(enemy.name);
+        $("#enemy_sprite").append("<img src=assets/images/" + charname + "idle.gif>")
+        $("#enemy_sprite").css('transform', 'scaleX(-1)');
         enemyChoice = true;
-        $("#choice4").toggle()
+        $("#choice" + charnum.choice).toggle()
         $("#instructions").text("Battle!")
         $("#buttonspace").toggle()
 
@@ -424,13 +292,15 @@ $("#choice4").click(function(){
     }
 
     else if (enemyChoice && enemy.isLive != true) {
-        for(var k in char_4) (enemy[k] = char_4[k])
-        $("#enemyicon").attr("src", "assets/images/bowser.png");
+        for(var k in charnum) (enemy[k] = charnum[k])
+        $("#enemyicon").attr("src", "assets/images/" + charname + ".png");
         $("#enemy-hp").text(enemy.hp);
         $("#enemy-atk").text(enemy.attack);
         $("#enemy-def").text(enemy.defense);
         $("#enemyname").html(enemy.name);
-        $("#choice4").toggle()
+        $("#enemy_sprite").append("<img src=assets/images/" + charname + "idle.gif>")
+        $("#enemy_sprite").css('transform', 'scaleX(-1)');
+        $("#choice" + charnum.choice).toggle()
         $("#instructions").text("Battle!")
         $("#buttonspace").toggle()
 
@@ -439,4 +309,5 @@ $("#choice4").click(function(){
     else {
 
     }
-})
+}
+
