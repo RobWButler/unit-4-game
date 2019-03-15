@@ -25,7 +25,7 @@ var enemy = {
 };
 
 var char_1 = {
-    name: "Mario",
+    name: "mario",
     hp: 200,
     attack: 50,
     defense: 20,
@@ -37,7 +37,7 @@ var char_1 = {
 }
 
 var char_2 = {
-    name: "Luigi",
+    name: "luigi",
     hp: 210,
     attack: 50,
     defense: 15,
@@ -49,7 +49,7 @@ var char_2 = {
 };
 
 var char_3 = {
-    name: "Peach",
+    name: "peach",
     hp: 220,
     attack: 40,
     defense: 25,
@@ -61,7 +61,7 @@ var char_3 = {
 };
 
 var char_4 = {
-    name: "Bowser",
+    name: "bowser",
     hp: 230,
     attack: 60,
     defense: 10,
@@ -133,19 +133,19 @@ function enemyTurn(event) {
 
     if (enemyAct === "attack") {
         attack(enemy, player);
-        $("#enemyactiontext").text(enemy.name + " counter-attacked for " + damage + " damage!")
+        $("#enemyactiontext").text(enemy.name.charAt(0).toUpperCase()  + enemy.name.slice(1) + " counter-attacked for " + damage + " damage!")
         $("#player-hp").text(" " + player.hp)
     }
 
     if (enemyAct === "atkbuff") {
         atkbuff(enemy);
-        $("#enemyactiontext").text(enemy.name + " powered up their next attack!")
+        $("#enemyactiontext").text(enemy.name.charAt(0).toUpperCase()  + enemy.name.slice(1) + " powered up their next attack!")
         $("#enemy-atk").text(" " + enemy.attack)
     }
 
     if (enemyAct === "block") {
         block(enemy);
-        $("#enemyactiontext").text(enemy.name + " blocked some damage from your attack!")
+        $("#enemyactiontext").text(enemy.name.charAt(0).toUpperCase()  + enemy.name.slice(1) + " blocked some damage from your attack!")
     }
 }
 
@@ -276,7 +276,7 @@ function selectCharacter(charname, charnum) {
         $("#player-hp").text(" " + player.hp);
         $("#player-atk").text(" " + player.attack);
         $("#player-def").text(" " + player.defense);
-        $("#playername").text(player.name);
+        $("#playername").text(player.name.charAt(0).toUpperCase()  + player.name.slice(1));
         $("#player_sprite").append("<img src=assets/images/" + charname + "idle.gif>")
         playerChoice = true;
         $("#choice" + charnum.choice).toggle()
@@ -292,7 +292,7 @@ function selectCharacter(charname, charnum) {
         $("#enemy-hp").text(" " + enemy.hp);
         $("#enemy-atk").text(" " + enemy.attack);
         $("#enemy-def").text(" " + enemy.defense);
-        $("#enemyname").html(enemy.name);
+        $("#enemyname").html(enemy.name.charAt(0).toUpperCase()  + enemy.name.slice(1));
         $("#enemy_sprite").html("<img src=assets/images/" + charname + "idle.gif>")
         $("#enemy_sprite").css('transform', 'scaleX(-1)');
         enemyChoice = true;
@@ -309,7 +309,7 @@ function selectCharacter(charname, charnum) {
         $("#enemy-hp").text(enemy.hp);
         $("#enemy-atk").text(enemy.attack);
         $("#enemy-def").text(enemy.defense);
-        $("#enemyname").html(enemy.name);
+        $("#enemyname").html(enemy.name.charAt(0).toUpperCase()  + enemy.name.slice(1));
         $("#enemy_sprite").html("<img src=assets/images/" + charname + "idle.gif>")
         $("#choice" + charnum.choice).toggle()
         $("#instructions").text("Battle!")
