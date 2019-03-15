@@ -218,10 +218,10 @@ $("#enemy-atk").text(" " + enemy.attack);
 $("#enemy-def").text(" " + enemy.defense);
 
 $("#btn-atk").click(function(){
+    enemyTurn()
     attack(player, enemy)
     $("#actiontext").text("You attacked " + enemy.name.charAt(0).toUpperCase()  + enemy.name.slice(1) + " for " + damage + " damage!")
     player.alreadyBuff = false;
-    enemyTurn()
     turnEnd(player, enemy)
     
 });
