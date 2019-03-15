@@ -330,12 +330,12 @@ $("#musictoggle").click(function(){
     if (musicOn === true) {
         playMusic.pause()
         musicOn = false;
-        $("#musictoggle").html("<i class='fas fa-volume-off'></i> Turn Music On")
+        $("#musictoggle").html("<i class='fas fa-volume-off'></i> Turn BGM On")
 
     }
     else {
         playMusic.play()
         musicOn = true;
-        $("#musictoggle").html("<i class='fas fa-volume-up'></i> Turn Music Off")
+        $("#musictoggle").html("<i class='fas fa-volume-up'></i> Turn BGM Off")
     }
 })
