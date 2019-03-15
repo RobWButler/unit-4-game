@@ -35,7 +35,7 @@ var char_1 = {
 var char_2 = {
     name: "Luigi",
     hp: 210,
-    attack: 60,
+    attack: 50,
     defense: 15,
     isBlock: false,
     isBuff: false,
@@ -48,7 +48,7 @@ var char_3 = {
     name: "Peach",
     hp: 220,
     attack: 40,
-    defense: 30,
+    defense: 25,
     isBlock: false,
     isBuff: false,
     isLive: true,
@@ -59,8 +59,8 @@ var char_3 = {
 var char_4 = {
     name: "Bowser",
     hp: 230,
-    attack: 65,
-    defense: 25,
+    attack: 60,
+    defense: 10,
     isBlock: false,
     isBuff: false,
     isLive: true,
