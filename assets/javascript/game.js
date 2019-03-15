@@ -146,6 +146,15 @@ function enemyTurn(event) {
     }
 }
 
+function checkDeath(charname){
+    if (player.name === charname) {
+        $("#player_sprite").html("<img src='assets/images/" + charname + "dead.gif'>");
+    }
+    if (enemy.name === charname) {
+        $("#enemy_sprite").html("<img src='assets/images/" + charname + "dead.gif'>");
+    }
+}
+
 function turnEnd(x, y) {
     if (x.isBlock) {
         x.defense = x.defense / 2.5
@@ -167,10 +176,7 @@ function turnEnd(x, y) {
         $("#player-hp").html("<i class='fas fa-skull'></i>")
         $("#instructions").text("GAME OVER!")
 
-        if (player.name === "Mario") {
-            $("#player_sprite").html("<img src='assets/images/mariodead.gif'>");
-        }
-
+        checkDeath(player.name)
     }
 
     if (enemy.hp <= 0) {
@@ -181,10 +187,10 @@ function turnEnd(x, y) {
         $("#enemy-hp").html("<i class='fas fa-skull'></i>")
         score++
 
-        if(enemy.name === "Mario") {
-            $("#enemy_sprite").html("<img src='assets/images/mariodead.gif'>");
-        }
+        checkDeath(enemy.name)
     }
+
+    
 
     if (score >= 3) {
         $("#instructions").text("You win!")
@@ -244,7 +250,6 @@ $("#choice1").click(function(){
 
 $("#choice2").click(function(){
     selectCharacter(char_2.name, char_2)
-
 })
 
 $("#choice3").click(function(){
@@ -261,7 +266,6 @@ function selectCharacter(charname, charnum) {
         for(var k in charnum) (player[k] = charnum[k])
         $("#playericon").attr("src", "assets/images/" + charname + ".png");
         $("#playericon").css('visibility', 'visible');
-        $("#playericon").css('transform', 'scaleX(-1)');
         $("#player-hp").text(" " + player.hp);
         $("#player-atk").text(" " + player.attack);
         $("#player-def").text(" " + player.defense);
@@ -281,7 +285,7 @@ function selectCharacter(charname, charnum) {
         $("#enemy-atk").text(" " + enemy.attack);
         $("#enemy-def").text(" " + enemy.defense);
         $("#enemyname").html(enemy.name);
-        $("#enemy_sprite").append("<img src=assets/images/" + charname + "idle.gif>")
+        $("#enemy_sprite").html("<img src=assets/images/" + charname + "idle.gif>")
         $("#enemy_sprite").css('transform', 'scaleX(-1)');
         enemyChoice = true;
         $("#choice" + charnum.choice).toggle()
@@ -298,8 +302,7 @@ function selectCharacter(charname, charnum) {
         $("#enemy-atk").text(enemy.attack);
         $("#enemy-def").text(enemy.defense);
         $("#enemyname").html(enemy.name);
-        $("#enemy_sprite").append("<img src=assets/images/" + charname + "idle.gif>")
-        $("#enemy_sprite").css('transform', 'scaleX(-1)');
+        $("#enemy_sprite").html("<img src=assets/images/" + charname + "idle.gif>")
         $("#choice" + charnum.choice).toggle()
         $("#instructions").text("Battle!")
         $("#buttonspace").toggle()
