@@ -241,3 +241,10 @@ body {
     transition: all ease 0.1s;
     cursor: pointer;
 }
+
+#musictoggle {
+    padding: 5px;
+    color:yellow;
+    text-shadow: .5px .5px 1px black;
+    cursor:not-allowed;
+}

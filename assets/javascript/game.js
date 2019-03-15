@@ -2,6 +2,8 @@ var playMusic = new Audio("assets/sound/26 - New Donk City Band Performance  (Su
 var winMusic = new Audio("assets/sound/01. Super Mario Bros. Victory Theme.mp3");
 var gameoverMusic = new Audio("assets/sound/2-27 - Miss.mp3")
 
+var musicOn = false;
+
 var player = {
     name: "",
     hp: "",
@@ -283,6 +285,8 @@ function selectCharacter(charname, charnum) {
         $("#choice" + charnum.choice).toggle()
         $("#instructions").text("Select your opponent!")
         playMusic.play();
+        musicOn = true;
+        $("#musictoggle").css("cursor", "pointer")
 
     }
     
@@ -300,7 +304,6 @@ function selectCharacter(charname, charnum) {
         $("#choice" + charnum.choice).toggle()
         $("#instructions").text("Battle!")
         $("#buttonspace").toggle()
-
 
     }
 
@@ -323,3 +326,16 @@ function selectCharacter(charname, charnum) {
     }
 }
 
+$("#musictoggle").click(function(){
+    if (musicOn === true) {
+        playMusic.pause()
+        musicOn = false;
+        $("#musictoggle").html("<i class='fas fa-volume-off'></i> Turn Music On")
+
+    }
+    else {
+        playMusic.play()
+        musicOn = true;
+        $("#musictoggle").html("<i class='fas fa-volume-up'></i> Turn Music Off")
+    }
+})
