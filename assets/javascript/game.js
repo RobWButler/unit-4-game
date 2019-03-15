@@ -75,6 +75,10 @@ function attack(x, y) {
 
     damage = x.attack - y.defense
 
+    if (damage < 0) {
+        damage = 0
+    }
+
     y.hp = y.hp - damage
 
     $("#player-hp").text(player.hp);
