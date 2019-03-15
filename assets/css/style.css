@@ -64,14 +64,20 @@ button {
     background-color:blue;
     color:cornsilk;
     font-variant:small-caps;
-    height:45px;
-    
+    height:45px;    
+
 }
 
 button:hover {
     border-color: darkred;
     background-color:red;
-    color:cornsilk;    
+    color:cornsilk;   
+    position:relative; 
+    top: -3px;
+    transition: all ease 0.1s;
+    cursor: pointer;
+    box-shadow:2px 2px 15px rgba(139, 0, 0, 0.781);  
+
 }
 
 #enemyspace {
@@ -119,7 +125,6 @@ button:hover {
     text-align:center;
     border-radius:10px;
     box-shadow:5px 5px 20px rgba(51, 51, 83, 0.8); 
-
 
 }
 
@@ -219,4 +224,20 @@ body {
     padding: 10px;
     position: relative;
     bottom: 14px;
+}
+
+#choice1:hover, #choice2:hover, #choice3:hover{
+    cursor: pointer;
+    position:relative;
+    top: -15px;
+    transition: all ease 0.1s;
+    cursor: pointer;
+}
+
+#choice4:hover {
+    cursor: pointer;
+    position:relative;
+    top: -20px;
+    transition: all ease 0.1s;
+    cursor: pointer;
 }

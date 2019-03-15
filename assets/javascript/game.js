@@ -184,7 +184,7 @@ function turnEnd(x, y) {
     }
 
     if (enemy.hp <= 0) {
-        $("#enemyactiontext").text("Enemy was defeated! You leveled up!")
+        $("#enemyactiontext").text(enemy.name.charAt(0).toUpperCase()  + enemy.name.slice(1) + " was defeated! You leveled up!")
         player.attack = player.attack + 10;
         $("#player-atk").text(" " + player.attack);
         player.defense = player.defense + 10;
@@ -219,7 +219,7 @@ $("#enemy-def").text(" " + enemy.defense);
 
 $("#btn-atk").click(function(){
     attack(player, enemy)
-    $("#actiontext").text("You attacked the enemy for " + damage + " damage!")
+    $("#actiontext").text("You attacked " + enemy.name.charAt(0).toUpperCase()  + enemy.name.slice(1) + " for " + damage + " damage!")
     player.alreadyBuff = false;
     enemyTurn()
     turnEnd(player, enemy)
