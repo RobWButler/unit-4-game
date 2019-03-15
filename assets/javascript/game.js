@@ -1,6 +1,6 @@
 var playMusic = new Audio("assets/sound/26 - New Donk City Band Performance  (Super Mario Bros. Theme Remix).mp3");
 var winMusic = new Audio("assets/sound/01. Super Mario Bros. Victory Theme.mp3");
-
+var gameoverMusic = new Audio("assets/sound/2-27 - Miss.mp3")
 
 var player = {
     name: "",
@@ -178,7 +178,8 @@ function turnEnd(x, y) {
         $("#buttonspace").toggle()
         $("#player-hp").html("<i class='fas fa-skull'></i>")
         $("#instructions").text("GAME OVER!")
-
+        playMusic.pause();
+        gameoverMusic.play();
         checkDeath(player.name)
     }
 
