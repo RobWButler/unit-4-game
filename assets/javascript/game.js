@@ -1,4 +1,5 @@
 var player = {
+    name: "",
     hp: "",
     attack: "",
     defense: "",
@@ -9,6 +10,7 @@ var player = {
 };
 
 var enemy = {
+    name: "",
     hp: "",
     attack: "",
     defense: "",
@@ -19,6 +21,7 @@ var enemy = {
 };
 
 var char_1 = {
+    name: "Mario",
     hp: 200,
     attack: 60,
     defense: 20,
@@ -29,6 +32,7 @@ var char_1 = {
 }
 
 var char_2 = {
+    name: "Luigi",
     hp: 200,
     attack: 50,
     defense: 10,
@@ -39,6 +43,7 @@ var char_2 = {
 };
 
 var char_3 = {
+    name: "Peach",
     hp: 250,
     attack: 60,
     defense: 30,
@@ -49,6 +54,7 @@ var char_3 = {
 };
 
 var char_4 = {
+    name: "Bowser",
     hp: 300,
     attack: 70,
     defense: 50,
@@ -62,6 +68,10 @@ var damage = "";
 
 var playerChoice = false;
 var enemyChoice = false;
+
+var score = 0;
+
+var enemyActions = [attack, atkbuff, block];
 
 function attack(x, y) {
 
@@ -104,9 +114,25 @@ function atkbuff(x) {
 
 //Aborted attempt at calling random functions so enemy could use the same moves as player randomly each turn
 function enemyTurn(event) {
-    attack(enemy, player)
-    $("#enemyactiontext").text("Enemy counter-attacked for " + damage + " damage!")
-    console.log(enemyChoice)
+    var enemyAct = enemyActions[(Math.random() * enemyActions.length)];
+    enemyAct
+    if (enemyAct = attack) {
+        attack(enemy, player);
+        $("#enemyactiontext").text(enemy.name + " counter-attacked for " + damage + " damage!")
+        $("player-hp").text(" " + player.hp)
+    }
+
+    else if (enemyAct = atkbuff) {
+        atkbuff(enemy);
+        $("#enemyactiontext").text(enemy.name + " powered up their next attack!")
+        $("enemy-atk").text(" " + enemy.attack)
+    }
+
+    else if (enemyAct = block) {
+        block(enemy);
+        $("#enemyactiontext").text(enemy.name + " blocked some damage from your attack!")
+    }
+    console.log(enemyAct)
 }
 
 function turnEnd(x, y) {
@@ -127,6 +153,8 @@ function turnEnd(x, y) {
         $("#actiontext").text("You lose!")
         player.isLive = false;
         $("#buttonspace").toggle()
+        $("#player-hp").html("<i class='fas fa-skull'></i>")
+        $("#instructions").text("GAME OVER!")
 
     }
 
@@ -135,19 +163,26 @@ function turnEnd(x, y) {
         enemy.isLive = false;
         $("#buttonspace").toggle()
         $("#instructions").text("Select your opponent!")
+        $("#enemy-hp").html("<i class='fas fa-skull'></i>")
+        score++
+    }
+
+    if (score >= 3) {
+        $("#instructions").text("You win!")
 
     }
 
+    
 };
 
 
-$("#player-hp").text(player.hp);
-$("#player-atk").text(player.attack);
-$("#player-def").text(player.defense);
+$("#player-hp").text(" " + player.hp);
+$("#player-atk").text(" " + player.attack);
+$("#player-def").text(" " + player.defense);
 
-$("#enemy-hp").text(enemy.hp);
-$("#enemy-atk").text(enemy.attack);
-$("#enemy-def").text(enemy.defense);
+$("#enemy-hp").text(" " + enemy.hp);
+$("#enemy-atk").text(" " + enemy.attack);
+$("#enemy-def").text(" " + enemy.defense);
 
 $("#btn-atk").click(function(){
     attack(player, enemy)
@@ -162,14 +197,14 @@ $("#btn-buff").click(function(){
 
     if (player.alreadyBuff) {
         $("#actiontext").text("Can't power up twice in a row!")
-        $("#player-atk").text(player.attack);
+        $("#player-atk").text(" " + player.attack);
         turnEnd(player, enemy)
     }
 
     else {
         atkbuff(player)
         $("#actiontext").text("You strengthened your attack for next turn!")
-        $("#player-atk").text(player.attack);
+        $("#player-atk").text(" " + player.attack);
         turnEnd(player, enemy)
     }
 });
@@ -184,9 +219,10 @@ $("#btn-blk").click(function(){
 $("#choice1").click(function(){
     if (playerChoice != true) {
         for(var k in char_1) (player[k] = char_1[k])
-        $("#player-hp").text(player.hp);
-        $("#player-atk").text(player.attack);
-        $("#player-def").text(player.defense);
+        $("#player-hp").text(" " + player.hp);
+        $("#player-atk").text(" " + player.attack);
+        $("#player-def").text(" " + player.defense);
+        $("#playername").html(player.name);
         playerChoice = true;
         $("#choice1").toggle()
         $("#instructions").text("Select your opponent!")
@@ -194,9 +230,10 @@ $("#choice1").click(function(){
     
     else if (enemyChoice !=true && enemy.isLive) {
         for(var k in char_1) (enemy[k] = char_1[k])
-        $("#enemy-hp").text(enemy.hp);
-        $("#enemy-atk").text(enemy.attack);
-        $("#enemy-def").text(enemy.defense);
+        $("#enemy-hp").text(" " + enemy.hp);
+        $("#enemy-atk").text(" " + enemy.attack);
+        $("#enemy-def").text(" " + enemy.defense);
+        $("#enemyname").html(enemy.name);
         enemyChoice = true;
         $("#choice1").toggle()
         $("#instructions").text("Battle!")
@@ -207,9 +244,10 @@ $("#choice1").click(function(){
 
     else if (enemyChoice && enemy.isLive != true) {
         for(var k in char_1) (enemy[k] = char_1[k])
-        $("#enemy-hp").text(enemy.hp);
-        $("#enemy-atk").text(enemy.attack);
-        $("#enemy-def").text(enemy.defense);
+        $("#enemy-hp").text(" " + enemy.hp);
+        $("#enemy-atk").text(" " + enemy.attack);
+        $("#enemy-def").text(" " + enemy.defense);
+        $("#enemyname").html(enemy.name);
         enemyChoice = true;
         $("#choice1").toggle()
         $("#instructions").text("Battle!")
@@ -226,9 +264,10 @@ $("#choice1").click(function(){
 $("#choice2").click(function(){
     if (playerChoice != true) {
         for(var k in char_2) (player[k] = char_2[k])
-        $("#player-hp").text(player.hp);
-        $("#player-atk").text(player.attack);
-        $("#player-def").text(player.defense);
+        $("#player-hp").text(" " + player.hp);
+        $("#player-atk").text(" " + player.attack);
+        $("#player-def").text(" " + player.defense);
+        $("#playername").text(player.name);
         playerChoice = true;
         $("#choice2").toggle()
         $("#instructions").text("Select your opponent!")
@@ -237,9 +276,10 @@ $("#choice2").click(function(){
 
     else if (enemyChoice !=true && enemy.isLive) {
         for(var k in char_2) (enemy[k] = char_2[k])
-        $("#enemy-hp").text(enemy.hp);
-        $("#enemy-atk").text(enemy.attack);
-        $("#enemy-def").text(enemy.defense);
+        $("#enemy-hp").text(" " + enemy.hp);
+        $("#enemy-atk").text(" " + enemy.attack);
+        $("#enemy-def").text(" " + enemy.defense);
+        $("#enemyname").html(enemy.name);
         enemyChoice = true;
         $("#choice2").toggle()
         $("#instructions").text("Battle!")
@@ -249,9 +289,10 @@ $("#choice2").click(function(){
     
     else if (enemyChoice && enemy.isLive != true) {
         for(var k in char_2) (enemy[k] = char_2[k])
-        $("#enemy-hp").text(enemy.hp);
-        $("#enemy-atk").text(enemy.attack);
-        $("#enemy-def").text(enemy.defense);
+        $("#enemy-hp").text(" " + enemy.hp);
+        $("#enemy-atk").text(" " + enemy.attack);
+        $("#enemy-def").text(" " + enemy.defense);
+        $("#enemyname").html(enemy.name);
         $("#choice2").toggle()
         $("#instructions").text("Battle!")
         $("#buttonspace").toggle()
@@ -266,9 +307,10 @@ $("#choice2").click(function(){
 $("#choice3").click(function(){
     if (playerChoice != true) {
         for(var k in char_3) (player[k] = char_3[k])
-        $("#player-hp").text(player.hp);
-        $("#player-atk").text(player.attack);
-        $("#player-def").text(player.defense);
+        $("#player-hp").text(" " + player.hp);
+        $("#player-atk").text(" " + player.attack);
+        $("#player-def").text(" " + player.defense);
+        $("#playername").text(player.name);
         playerChoice = true;
         $("#choice3").toggle()
         $("#instructions").text("Select your opponent!")
@@ -277,9 +319,10 @@ $("#choice3").click(function(){
     
     else if (enemyChoice !=true && enemy.isLive) {
         for(var k in char_3) (enemy[k] = char_3[k])
-        $("#enemy-hp").text(enemy.hp);
-        $("#enemy-atk").text(enemy.attack);
-        $("#enemy-def").text(enemy.defense);
+        $("#enemy-hp").text(" " + enemy.hp);
+        $("#enemy-atk").text(" " + enemy.attack);
+        $("#enemy-def").text(" " + enemy.defense);
+        $("#enemyname").html(enemy.name);
         enemyChoice = true;
         $("#choice3").toggle()
         $("#instructions").text("Battle!")
@@ -289,9 +332,10 @@ $("#choice3").click(function(){
 
     else if (enemyChoice && enemy.isLive != true) {
         for(var k in char_3) (enemy[k] = char_3[k])
-        $("#enemy-hp").text(enemy.hp);
-        $("#enemy-atk").text(enemy.attack);
-        $("#enemy-def").text(enemy.defense);
+        $("#enemy-hp").text(" " + enemy.hp);
+        $("#enemy-atk").text(" " + enemy.attack);
+        $("#enemy-def").text(" " + enemy.defense);
+        $("#enemyname").html(enemy.name);
         $("#choice3").toggle()
         $("#instructions").text("Battle!")
         $("#buttonspace").toggle()
@@ -306,9 +350,10 @@ $("#choice3").click(function(){
 $("#choice4").click(function(){
     if (playerChoice != true) {
         for(var k in char_4) (player[k] = char_4[k])
-        $("#player-hp").text(player.hp);
-        $("#player-atk").text(player.attack);
-        $("#player-def").text(player.defense);
+        $("#player-hp").text(" " + player.hp);
+        $("#player-atk").text(" " + player.attack);
+        $("#player-def").text(" " + player.defense);
+        $("#playername").text(player.name);
         playerChoice = true;
         $("#choice4").toggle()
         $("#instructions").text("Select your opponent!")
@@ -317,9 +362,10 @@ $("#choice4").click(function(){
     
     else if (enemyChoice !=true && enemy.isLive) {
         for(var k in char_4) (enemy[k] = char_4[k])
-        $("#enemy-hp").text(enemy.hp);
-        $("#enemy-atk").text(enemy.attack);
-        $("#enemy-def").text(enemy.defense);
+        $("#enemy-hp").text(" " + enemy.hp);
+        $("#enemy-atk").text(" " + enemy.attack);
+        $("#enemy-def").text(" " + enemy.defense);
+        $("#enemyname").html(enemy.name);
         enemyChoice = true;
         $("#choice4").toggle()
         $("#instructions").text("Battle!")
@@ -333,6 +379,7 @@ $("#choice4").click(function(){
         $("#enemy-hp").text(enemy.hp);
         $("#enemy-atk").text(enemy.attack);
         $("#enemy-def").text(enemy.defense);
+        $("#enemyname").html(enemy.name);
         $("#choice4").toggle()
         $("#instructions").text("Battle!")
         $("#buttonspace").toggle()

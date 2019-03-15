@@ -1,14 +1,26 @@
+body {
+    background-image: url("../images/SSBU-3D_Land.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
 h1 {
     font-size:150%;
     font-weight:bold;
 }
 
 hr {
-    width:95%
+    width:95%;
+    border-color:purple;
 }
 
 .statsheet {
     float:left;
+    text-shadow: .5px .5px 1px black;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 
 .statline {
@@ -29,14 +41,28 @@ hr {
     border-color:darkslateblue;
     margin-bottom: 10px;
     height: 300px;
-    width: 200px;
+    width: 260px;
     left:0px;
+    background: rgba(10, 200, 0, 0.6); 
+    font-variant: small-caps;
+
 }
 
 #buttonspace {
-    margin:7px;
-    margin-top:25px;
+    margin:10px;
     display:none;
+}
+
+button {
+    border-style: solid;
+    border-width: 2px;
+    border-color: darkblue;
+    border-radius:8px;
+    background-color:blue;
+    color:cornsilk;
+    font-variant:small-caps;
+    height:45px;
+    
 }
 
 #enemyspace {
@@ -45,10 +71,14 @@ hr {
     border-color:red;
     margin-bottom: 10px;
     height: 300px;
-    width: 200px;
+    width: 260px;
     right:-5px;
     top:0px;
     position:absolute;
+    background: rgba(10, 200, 0, 0.6); 
+    font-variant: small-caps;
+
+
 }
 
 #actionspace {
@@ -57,6 +87,11 @@ hr {
     border-style:ridge;
     border-color:teal;
     border-width:3px;
+    background: rgba(120, 120, 200, 0.8); 
+    text-shadow: .5px .5px 1px black;
+    color: honeydew;
+    font-weight:bolder;
+
 }
 
 #actiontext {
@@ -73,6 +108,22 @@ hr {
     border-style:ridge;
     border-color:teal;
     border-width:3px;
+    background: rgba(120, 120, 200, 0.8); 
+
+}
+
+#instructions {
+    padding: 15px;
+    text-shadow: .5px .5px 1px black;
+    color: white;
+    font-weight:bolder;
+    font-variant: small-caps;
+    font-size:28px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+#fighterspace {
+    padding:10px;
 }
 
 #playericon {
@@ -88,13 +139,27 @@ hr {
 #playername {
     float:right;
     padding: 10px;
+    font-size:200%;
+    font-weight:bolder;
+    text-shadow: .5px .5px 1px black;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 
 #enemyname {
     padding: 10px;
     margin-bottom:50px;
+    font-size:200%;
+    font-weight:bolder;
+    text-shadow: .5px .5px 1px black;
+    color: white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
 }
 
-#instructions {
-    padding: 10px;
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
