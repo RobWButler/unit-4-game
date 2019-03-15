@@ -43,9 +43,10 @@ hr {
     height: 330px;
     width: 260px;
     left:0px;
-    background: rgba(10, 200, 0, 0.6); 
+    background: rgba(159, 255, 4, 0.719); 
     font-variant: small-caps;
-
+    border-radius:10px;
+    box-shadow:5px 5px 20px rgba(163, 120, 11, 0.781);  
 }
 
 #buttonspace {
@@ -83,8 +84,10 @@ button:hover {
     right:-5px;
     top:0px;
     position:absolute;
-    background: rgba(10, 200, 0, 0.6); 
+    background: rgba(159, 255, 4, 0.719); 
     font-variant: small-caps;
+    border-radius:10px;
+    box-shadow:5px 5px 20px rgba(163, 120, 11, 0.781);  
 
 }
 
@@ -114,6 +117,9 @@ button:hover {
     color: honeydew;
     font-weight:bolder;
     text-align:center;
+    border-radius:10px;
+    box-shadow:5px 5px 20px rgba(51, 51, 83, 0.8); 
+
 
 }
 
@@ -132,6 +138,9 @@ button:hover {
     border-color:teal;
     border-width:3px;
     background: rgba(120, 120, 200, 0.8); 
+    border-radius:10px;
+    box-shadow:5px 5px 20px rgba(51, 51, 83, 0.8); 
+
 }
 
 #instructions {
