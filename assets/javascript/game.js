@@ -1,3 +1,7 @@
+var playMusic = new Audio("assets/sound/26 - New Donk City Band Performance  (Super Mario Bros. Theme Remix).mp3");
+var winMusic = new Audio("assets/sound/01. Super Mario Bros. Victory Theme.mp3");
+
+
 var player = {
     name: "",
     hp: "",
@@ -196,6 +200,8 @@ function turnEnd(x, y) {
 
     if (score >= 3) {
         $("#instructions").text("You win!")
+        playMusic.pause();
+        winMusic.play();
 
     }
     
@@ -275,6 +281,7 @@ function selectCharacter(charname, charnum) {
         playerChoice = true;
         $("#choice" + charnum.choice).toggle()
         $("#instructions").text("Select your opponent!")
+        playMusic.play();
 
     }
     
