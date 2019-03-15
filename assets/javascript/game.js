@@ -229,6 +229,8 @@ $("#btn-blk").click(function(){
 $("#choice1").click(function(){
     if (playerChoice != true) {
         for(var k in char_1) (player[k] = char_1[k])
+        $("#playericon").attr("src", "assets/images/mario.png");
+        $("#playericon").css('visibility', 'visible');
         $("#player-hp").text(" " + player.hp);
         $("#player-atk").text(" " + player.attack);
         $("#player-def").text(" " + player.defense);
@@ -240,6 +242,8 @@ $("#choice1").click(function(){
     
     else if (enemyChoice !=true && enemy.isLive) {
         for(var k in char_1) (enemy[k] = char_1[k])
+        $("#enemyicon").attr("src", "assets/images/mario.png");
+        $("#enemyicon").css('visibility', 'visible');
         $("#enemy-hp").text(" " + enemy.hp);
         $("#enemy-atk").text(" " + enemy.attack);
         $("#enemy-def").text(" " + enemy.defense);
@@ -254,6 +258,7 @@ $("#choice1").click(function(){
 
     else if (enemyChoice && enemy.isLive != true) {
         for(var k in char_1) (enemy[k] = char_1[k])
+        $("#enemyicon").attr("src", "assets/images/mario.png");
         $("#enemy-hp").text(" " + enemy.hp);
         $("#enemy-atk").text(" " + enemy.attack);
         $("#enemy-def").text(" " + enemy.defense);
@@ -274,6 +279,8 @@ $("#choice1").click(function(){
 $("#choice2").click(function(){
     if (playerChoice != true) {
         for(var k in char_2) (player[k] = char_2[k])
+        $("#playericon").attr("src", "assets/images/luigi.png");
+        $("#playericon").css('visibility', 'visible');
         $("#player-hp").text(" " + player.hp);
         $("#player-atk").text(" " + player.attack);
         $("#player-def").text(" " + player.defense);
@@ -286,6 +293,8 @@ $("#choice2").click(function(){
 
     else if (enemyChoice !=true && enemy.isLive) {
         for(var k in char_2) (enemy[k] = char_2[k])
+        $("#enemyicon").attr("src", "assets/images/luigi.png");
+        $("#enemyicon").css('visibility', 'visible');
         $("#enemy-hp").text(" " + enemy.hp);
         $("#enemy-atk").text(" " + enemy.attack);
         $("#enemy-def").text(" " + enemy.defense);
@@ -299,6 +308,7 @@ $("#choice2").click(function(){
     
     else if (enemyChoice && enemy.isLive != true) {
         for(var k in char_2) (enemy[k] = char_2[k])
+        $("#enemyicon").attr("src", "assets/images/luigi.png");
         $("#enemy-hp").text(" " + enemy.hp);
         $("#enemy-atk").text(" " + enemy.attack);
         $("#enemy-def").text(" " + enemy.defense);
@@ -317,6 +327,8 @@ $("#choice2").click(function(){
 $("#choice3").click(function(){
     if (playerChoice != true) {
         for(var k in char_3) (player[k] = char_3[k])
+        $("#playericon").attr("src", "assets/images/peach.png");
+        $("#playericon").css('visibility', 'visible');
         $("#player-hp").text(" " + player.hp);
         $("#player-atk").text(" " + player.attack);
         $("#player-def").text(" " + player.defense);
@@ -329,6 +341,8 @@ $("#choice3").click(function(){
     
     else if (enemyChoice !=true && enemy.isLive) {
         for(var k in char_3) (enemy[k] = char_3[k])
+        $("#enemyicon").attr("src", "assets/images/peach.png");
+        $("#enemyicon").css('visibility', 'visible');
         $("#enemy-hp").text(" " + enemy.hp);
         $("#enemy-atk").text(" " + enemy.attack);
         $("#enemy-def").text(" " + enemy.defense);
@@ -342,6 +356,7 @@ $("#choice3").click(function(){
 
     else if (enemyChoice && enemy.isLive != true) {
         for(var k in char_3) (enemy[k] = char_3[k])
+        $("#enemyicon").attr("src", "assets/images/peach.png");
         $("#enemy-hp").text(" " + enemy.hp);
         $("#enemy-atk").text(" " + enemy.attack);
         $("#enemy-def").text(" " + enemy.defense);
@@ -360,6 +375,8 @@ $("#choice3").click(function(){
 $("#choice4").click(function(){
     if (playerChoice != true) {
         for(var k in char_4) (player[k] = char_4[k])
+        $("#playericon").attr("src", "assets/images/bowser.png");
+        $("#playericon").css('visibility', 'visible');
         $("#player-hp").text(" " + player.hp);
         $("#player-atk").text(" " + player.attack);
         $("#player-def").text(" " + player.defense);
@@ -372,6 +389,8 @@ $("#choice4").click(function(){
     
     else if (enemyChoice !=true && enemy.isLive) {
         for(var k in char_4) (enemy[k] = char_4[k])
+        $("#enemyicon").attr("src", "assets/images/bowser.png");
+        $("#enemyicon").css('visibility', 'visible');
         $("#enemy-hp").text(" " + enemy.hp);
         $("#enemy-atk").text(" " + enemy.attack);
         $("#enemy-def").text(" " + enemy.defense);
@@ -386,6 +405,7 @@ $("#choice4").click(function(){
 
     else if (enemyChoice && enemy.isLive != true) {
         for(var k in char_4) (enemy[k] = char_4[k])
+        $("#enemyicon").attr("src", "assets/images/bowser.png");
         $("#enemy-hp").text(enemy.hp);
         $("#enemy-atk").text(enemy.attack);
         $("#enemy-def").text(enemy.defense);
