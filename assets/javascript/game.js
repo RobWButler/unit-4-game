@@ -88,7 +88,7 @@ function attack(x, y) {
         x.isBuff = false;
         x.attack = x.attack / 2
         $("#player-atk").text(player.attack);
-        $("#enemy-atk").text(player.attack);
+        $("#enemy-atk").text(enemy.attack);
 
     }
     
@@ -127,13 +127,13 @@ function enemyTurn(event) {
     if (enemyAct === "attack") {
         attack(enemy, player);
         $("#enemyactiontext").text(enemy.name + " counter-attacked for " + damage + " damage!")
-        $("player-hp").text(" " + player.hp)
+        $("#player-hp").text(" " + player.hp)
     }
 
     if (enemyAct === "atkbuff") {
         atkbuff(enemy);
         $("#enemyactiontext").text(enemy.name + " powered up their next attack!")
-        $("enemy-atk").text(" " + enemy.attack)
+        $("#enemy-atk").text(" " + enemy.attack)
     }
 
     if (enemyAct === "block") {
