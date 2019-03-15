@@ -34,9 +34,9 @@ var char_1 = {
 
 var char_2 = {
     name: "Luigi",
-    hp: 200,
+    hp: 210,
     attack: 60,
-    defense: 10,
+    defense: 15,
     isBlock: false,
     isBuff: false,
     isLive: true,
@@ -48,7 +48,7 @@ var char_3 = {
     name: "Peach",
     hp: 220,
     attack: 40,
-    defense: 40,
+    defense: 30,
     isBlock: false,
     isBuff: false,
     isLive: true,
@@ -59,8 +59,8 @@ var char_3 = {
 var char_4 = {
     name: "Bowser",
     hp: 230,
-    attack: 70,
-    defense: 30,
+    attack: 65,
+    defense: 25,
     isBlock: false,
     isBuff: false,
     isLive: true,
@@ -180,7 +180,11 @@ function turnEnd(x, y) {
     }
 
     if (enemy.hp <= 0) {
-        $("#enemyactiontext").text("Enemy was defeated!")
+        $("#enemyactiontext").text("Enemy was defeated! You leveled up!")
+        player.attack = player.attack + 10;
+        $("#player-atk").text(" " + player.attack);
+        player.defense = player.defense + 10;
+        $("#player-def").text(" " + player.defense);
         enemy.isLive = false;
         $("#buttonspace").toggle()
         $("#instructions").text("Select your opponent!")
