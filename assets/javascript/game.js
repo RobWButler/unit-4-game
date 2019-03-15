@@ -115,7 +115,6 @@ function atkbuff(x) {
     }
 };
 
-//Aborted attempt at calling random functions so enemy could use the same moves as player randomly each turn
 function enemyTurn(event) {
     
     var enemyActions = ["attack", "atkbuff", "block"];
@@ -194,13 +193,11 @@ function turnEnd(x, y) {
         checkDeath(enemy.name)
     }
 
-    
 
     if (score >= 3) {
         $("#instructions").text("You win!")
 
     }
-
     
 };
 
