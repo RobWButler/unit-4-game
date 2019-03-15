@@ -23,7 +23,7 @@ var enemy = {
 var char_1 = {
     name: "Mario",
     hp: 200,
-    attack: 60,
+    attack: 50,
     defense: 20,
     isBlock: false,
     isBuff: false,
@@ -34,7 +34,7 @@ var char_1 = {
 var char_2 = {
     name: "Luigi",
     hp: 200,
-    attack: 50,
+    attack: 60,
     defense: 10,
     isBlock: false,
     isBuff: false,
@@ -44,9 +44,9 @@ var char_2 = {
 
 var char_3 = {
     name: "Peach",
-    hp: 250,
-    attack: 60,
-    defense: 30,
+    hp: 220,
+    attack: 40,
+    defense: 40,
     isBlock: false,
     isBuff: false,
     isLive: true,
@@ -55,9 +55,9 @@ var char_3 = {
 
 var char_4 = {
     name: "Bowser",
-    hp: 300,
+    hp: 230,
     attack: 70,
-    defense: 50,
+    defense: 30,
     isBlock: false,
     isBuff: false,
     isLive: true,
@@ -163,7 +163,7 @@ function turnEnd(x, y) {
         $("#player-hp").html("<i class='fas fa-skull'></i>")
         $("#instructions").text("GAME OVER!")
 
-        if (player.name = "Mario") {
+        if (player.name === "Mario") {
             $("#player_sprite").html("<img src='assets/images/mariodead.gif'>");
         }
 
@@ -177,7 +177,7 @@ function turnEnd(x, y) {
         $("#enemy-hp").html("<i class='fas fa-skull'></i>")
         score++
 
-        if(enemy.name = "Mario") {
+        if(enemy.name === "Mario") {
             $("#enemy_sprite").html("<img src='assets/images/mariodead.gif'>");
         }
     }
@@ -267,7 +267,7 @@ $("#choice1").click(function(){
 
     }
 
-    else if (enemyChoice && enemy.isLive != true) {
+    else if (enemyChoice && !enemy.isLive) {
         for(var k in char_1) (enemy[k] = char_1[k])
         $("#enemyicon").attr("src", "assets/images/mario.png");
         $("#enemy-hp").text(" " + enemy.hp);
@@ -320,7 +320,7 @@ $("#choice2").click(function(){
 
     }
     
-    else if (enemyChoice && enemy.isLive != true) {
+    else if (enemyChoice && !enemy.isLive) {
         for(var k in char_2) (enemy[k] = char_2[k])
         $("#enemyicon").attr("src", "assets/images/luigi.png");
         $("#enemyicon").css('transform', 'scaleX(-1)');
@@ -340,6 +340,7 @@ $("#choice2").click(function(){
 })
 
 $("#choice3").click(function(){
+
     if (playerChoice != true) {
         for(var k in char_3) (player[k] = char_3[k])
         $("#playericon").attr("src", "assets/images/peach.png");
@@ -370,7 +371,8 @@ $("#choice3").click(function(){
 
     }
 
-    else if (enemyChoice && enemy.isLive != true) {
+    else if (enemyChoice && !enemy.isLive) {
+        
         for(var k in char_3) (enemy[k] = char_3[k])
         $("#enemyicon").attr("src", "assets/images/peach.png");
         $("#enemy-hp").text(" " + enemy.hp);
@@ -379,7 +381,8 @@ $("#choice3").click(function(){
         $("#enemyname").html(enemy.name);
         $("#choice3").toggle()
         $("#instructions").text("Battle!")
-        $("#buttonspace").toggle()
+        $("#buttonspace").toggle();
+
 
     }
 
