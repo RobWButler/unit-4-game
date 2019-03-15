@@ -71,8 +71,6 @@ var enemyChoice = false;
 
 var score = 0;
 
-var enemyActions = [attack, atkbuff, block];
-
 function attack(x, y) {
 
     damage = x.attack - y.defense
@@ -90,13 +88,11 @@ function attack(x, y) {
 
     }
 
-    console.log(x, y)
 };
 
 function block(x) {
     x.isBlock = true
     x.defense = x.defense * 2.5
-    console.log(x.defense)
 };
 
 function atkbuff(x) {
@@ -107,32 +103,39 @@ function atkbuff(x) {
     else {
         x.isBuff = true
         x.attack = x.attack * 2
-        console.log(x.attack)
         x.alreadyBuff = true
     }
 };
 
 //Aborted attempt at calling random functions so enemy could use the same moves as player randomly each turn
 function enemyTurn(event) {
-    var enemyAct = enemyActions[(Math.random() * enemyActions.length)];
-    enemyAct
-    if (enemyAct = attack) {
+    
+    var enemyActions = ["attack", "atkbuff", "block"];
+
+    function chooseEnemyAct() {
+        enemyAct = enemyActions[Math.floor(Math.random() * enemyActions.length)];
+    }
+
+    chooseEnemyAct()    
+    console.log(enemyAct)
+
+
+    if (enemyAct === "attack") {
         attack(enemy, player);
         $("#enemyactiontext").text(enemy.name + " counter-attacked for " + damage + " damage!")
         $("player-hp").text(" " + player.hp)
     }
 
-    else if (enemyAct = atkbuff) {
+    if (enemyAct === "atkbuff") {
         atkbuff(enemy);
         $("#enemyactiontext").text(enemy.name + " powered up their next attack!")
         $("enemy-atk").text(" " + enemy.attack)
     }
 
-    else if (enemyAct = block) {
+    if (enemyAct === "block") {
         block(enemy);
         $("#enemyactiontext").text(enemy.name + " blocked some damage from your attack!")
     }
-    console.log(enemyAct)
 }
 
 function turnEnd(x, y) {
@@ -198,6 +201,7 @@ $("#btn-buff").click(function(){
     if (player.alreadyBuff) {
         $("#actiontext").text("Can't power up twice in a row!")
         $("#player-atk").text(" " + player.attack);
+        enemyTurn();
         turnEnd(player, enemy)
     }
 
@@ -205,6 +209,7 @@ $("#btn-buff").click(function(){
         atkbuff(player)
         $("#actiontext").text("You strengthened your attack for next turn!")
         $("#player-atk").text(" " + player.attack);
+        enemyTurn();
         turnEnd(player, enemy)
     }
 });
@@ -212,6 +217,7 @@ $("#btn-buff").click(function(){
 $("#btn-blk").click(function(){
     block(player)
     $("#actiontext").text("You blocked some incoming damage!")
+    enemyTurn();
     turnEnd(player, enemy)
 });
 
