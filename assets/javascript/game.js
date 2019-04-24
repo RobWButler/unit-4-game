@@ -6,9 +6,9 @@ var musicOn = false;
 
 var Character = function (name, hp, attack, defense, choice){
     this.name = name;
-    this.hp = parseInt(hp);
-    this.atk = parseInt(attack);
-    this.defense = parseInt(defense);
+    this.hp = hp;
+    this.atk = attack;
+    this.defense = defense;
     this.choice = choice;
     this.isBlock = false;
     this.isBuff= false;
@@ -23,14 +23,14 @@ var Character = function (name, hp, attack, defense, choice){
 
     y.hp -= damage;
 
-    $("#player-hp").text(this.hp);
-    $("#enemy-hp").text(y.hp);
+    $("#player-hp").text(player.hp);
+    $("#enemy-hp").text(enemy.hp);
     
         if (this.isBuff) {
             this.isBuff = false;
-            this.atk /= 2;
+            this.atk /= 2.5;
             $("#player-atk").text(this.atk);
-            $("#enemy-atk").text(this.atk);
+            $("#enemy-atk").text(y.atk);
 
         };
     };
@@ -41,20 +41,17 @@ var Character = function (name, hp, attack, defense, choice){
     };
     
     this.atkbuff = function() {
-        if (this.isBuff) {
-        
-        }
-    
-        else {
+        if (!this.isBuff) {
             this.isBuff = true;
             this.atk *= 2.5;
         }
+
     };
 
     this.turnEnd = function(y) {
         if (this.isBlock) {
             this.defense /= 2.5;
-            console.log(this.defense)
+
         }
     
         if (y.isBlock) {
@@ -75,7 +72,7 @@ var Character = function (name, hp, attack, defense, choice){
             $("#instructions").text("GAME OVER!")
             playMusic.pause();
             gameoverMusic.play();
-            checkDeath(player.name)
+            $("#player_sprite").html("<img src='assets/images/" + this.name + "dead.gif'>");
         }
     
         if (enemy.hp <= 0) {
@@ -89,18 +86,14 @@ var Character = function (name, hp, attack, defense, choice){
             $("#instructions").text("Select your opponent!")
             $("#enemy-hp").html("<i class='fas fa-skull'></i>")
             score++
-    
-            checkDeath(enemy.name)
+            $("#enemy_sprite").html("<img src='assets/images/" + enemy.name+ "dead.gif'>");
         }
-    
     
         if (score >= 3) {
             $("#instructions").text("You win!")
             playMusic.pause();
             winMusic.play();
-    
         }
-        
     };
 }
 
@@ -118,19 +111,20 @@ var enemyChoice = false;
 
 var score = 0;
 
-
-
-function enemyTurn(event) {
+function enemyTurn() {
     
     var enemyActions = ["attack", "atkbuff", "block"];
 
     function chooseEnemyAct() {
-        enemyAct = enemyActions[Math.floor(Math.random() * enemyActions.length)];
+        if (!enemy.isBuff){
+            enemyAct = enemyActions[Math.floor(Math.random() * enemyActions.length)];
+        } else { 
+            enemyAct = "attack"
+        }
     }
 
     chooseEnemyAct()    
-    console.log(enemyAct)
-
+    console.log("enemy action: " + enemyAct)
 
     if (enemyAct === "attack") {
         enemy.attack(player);
@@ -140,7 +134,7 @@ function enemyTurn(event) {
 
     if (enemyAct === "atkbuff") {
         enemy.atkbuff();
-        $("#enemyactiontext").text(enemy.name.charAt(0).toUpperCase()  + enemy.name.slice(1) + " powered up their next attack!")
+        $("#enemyactiontext").text(enemy.name.charAt(0).toUpperCase()  + enemy.name.slice(1) + " is powering up to attack next turn!")
         $("#enemy-atk").text(" " + enemy.atk)
     }
 
@@ -149,24 +143,6 @@ function enemyTurn(event) {
         $("#enemyactiontext").text(enemy.name.charAt(0).toUpperCase()  + enemy.name.slice(1) + " blocked some damage from your attack!")
     }
 }
-
-function checkDeath(charname){
-    if (player.name === charname) {
-        $("#player_sprite").html("<img src='assets/images/" + charname + "dead.gif'>");
-    }
-    if (enemy.name === charname) {
-        $("#enemy_sprite").html("<img src='assets/images/" + charname + "dead.gif'>");
-    }
-}
-
-
-$("#player-hp").text(" " + player.hp);
-$("#player-atk").text(" " + player.atk);
-$("#player-def").text(" " + player.defense);
-
-$("#enemy-hp").text(" " + enemy.hp);
-$("#enemy-atk").text(" " + enemy.atk);
-$("#enemy-def").text(" " + enemy.defense);
 
 $("#btn-atk").click(function(){
     enemyTurn()
@@ -179,7 +155,7 @@ $("#btn-atk").click(function(){
 
 $("#btn-buff").click(function(){
 
-    if (player.alreadyBuff) {
+    if (player.isBuff) {
         $("#actiontext").text("Can't power up twice in a row!")
         $("#player-atk").text(" " + player.atk);
         enemyTurn();
