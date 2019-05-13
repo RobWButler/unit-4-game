@@ -13,6 +13,7 @@ h1 {
 hr {
     width:95%;
     border-color:purple;
+    display: flex;
 }
 
 .statsheet {
